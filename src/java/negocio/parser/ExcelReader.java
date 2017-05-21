@@ -6,7 +6,7 @@
 package negocio.parser;
 
 import java.util.ArrayList;
-import negocio.dto.PersonaDTO;
+import negocio.dao.interfaces.IExcelContent;
 import negocio.interfaces.InterfaceExcel;
 
 /**
@@ -16,7 +16,7 @@ import negocio.interfaces.InterfaceExcel;
 public class ExcelReader implements InterfaceExcel{
 
     @Override
-    public ArrayList<PersonaDTO> leerArchivo(String ruta) {
+    public ArrayList<IExcelContent> leerArchivo(String ruta) {
         //Busca el archivo y realiza el correspondiente recorrido. Se construye un List<PersonaDTO>. 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

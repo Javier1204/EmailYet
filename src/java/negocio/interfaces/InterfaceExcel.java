@@ -6,6 +6,7 @@
 package negocio.interfaces;
 
 import java.util.ArrayList;
+import negocio.dao.interfaces.IExcelContent;
 import negocio.dto.PersonaDTO;
 
 /**
@@ -14,5 +15,5 @@ import negocio.dto.PersonaDTO;
  */
 public interface InterfaceExcel {
     
-    public ArrayList<PersonaDTO> leerArchivo(String ruta);
+    public ArrayList<IExcelContent> leerArchivo(String ruta);
 }
