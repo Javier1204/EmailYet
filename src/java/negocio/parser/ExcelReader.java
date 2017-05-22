@@ -16,9 +16,8 @@ import negocio.interfaces.InterfaceExcel;
 public class ExcelReader implements InterfaceExcel{
 
     @Override
-    public ArrayList<IExcelContent> leerArchivo(String ruta) {
-        //Busca el archivo y realiza el correspondiente recorrido. Se construye un List<PersonaDTO>. 
+    public IExcelContent leerArchivo(String ruta) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
