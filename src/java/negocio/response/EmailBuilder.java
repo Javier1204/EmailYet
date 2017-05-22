@@ -23,7 +23,7 @@ public class EmailBuilder {
     }
     
     //Recibe la lista y la recorre delegando a email (Atributo) el envío del correo
-    public boolean enviarEmails(IExcelContent lista, String contenidoMensaje, String asunto){
+    public boolean enviarEmails(IExcelContent lista, String contenidoMensaje, String asunto, int columna){
         //Recorrer lista y enviar con email.sendEmail() 
         /*Recibir cada boolean de email.sendEmail() y actualizar boolean a retornar. Si email.sendEmail retorna un false
         se cambia a false el boolean de este método. Contar cantidad de false recibidos de email

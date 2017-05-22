@@ -51,17 +51,17 @@ public class Facade {
         return DigestUtils.md5Hex(cad);    
     }
     
-    public boolean leerArchivo(String ruta, String contenido, String asunto){
+    public boolean leerArchivo(String ruta, String contenido, String asunto,int columna){
         //Pedir a excel_helper que retorne la lista de Personas a través de leerArchivo
         IExcelContent ec=excel_helper.leerArchivo(ruta);
         //Delegar función de envío de email a enviarEmail (Abajo). Retornar su boolean
-        return false;
+        return this.enviarEmail(ec, contenido, asunto,columna);
     }
     
-    public boolean enviarEmail(IExcelContent tabla, String contenido, String asunto){
+    public boolean enviarEmail(IExcelContent tabla, String contenido, String asunto, int columna){
         //Al tener el list pedir al email_helper enviar los email. email_helper (Instacia de EmailBuilder)
-        email_helper.enviarEmails(tabla, contenido, asunto);
+        return email_helper.enviarEmails(tabla, contenido, asunto, columna);
         //Retornar boolean de email_helper
-        return false;
+        //return false;
     }
 }
