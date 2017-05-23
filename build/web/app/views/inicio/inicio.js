@@ -31,41 +31,11 @@ function enviarArchivoExcel() {
             if (data.status == 1)
             {
                 eModal.alert("se envió el correo corectamente");
-                listarEmails();
             } else
             {
                 eModal.alert(data.description);
             }
 
-        },
-        error: function (request, textStatus, error) {
-            eModal.alert("Ha ocurrido un error.");
-        }
-    });
-}
-
-function listarEmails() {
-    var campo = ("divCarga");
-    $.ajax({
-        url: endpoints.listar,
-        data: data,
-        cache: false,
-        contentType: false,
-        processData: false,
-        type: 'POST',
-        success: function (data) {
-            if (data.length === 0) {
-                $(campo).after("<div class='box-body'> No hay emails enviados </div>");
-            }
-            else {
-                for (i = 0; i < array.length; i++){
-                    var resp= "No";
-                    if(array[i].respuesta){
-                        resp="Sí";
-                    }
-                    $(campo).after(" <div class='box-body'>"+ data[i].asunto +"</div>" );
-                }
-            }
         },
         error: function (request, textStatus, error) {
             eModal.alert("Ha ocurrido un error.");

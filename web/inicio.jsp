@@ -64,7 +64,6 @@
                                     <!-- User image -->
                                     <li class="user-header">
                                         <img src="dist/img/user.png" class="img-circle" alt="User Image">
-
                                         <p>
                                              Usuario de mail
                                             <small> Alejandro, Jairo, Denis y Javier  </small>

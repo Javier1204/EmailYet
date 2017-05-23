@@ -43,7 +43,7 @@
             <div class="login-box-body">
                 <p class="login-box-msg">inicio sesion</p>
 
-                <form action="/YET/login" method="POST">
+                <form action="" method="POST">
                     <div class="form-group has-feedback">
                         <input type="text" class="form-control" placeholder="Username" name="username">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

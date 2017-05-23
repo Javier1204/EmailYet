@@ -13,10 +13,6 @@
         <servlet-name>inicio</servlet-name>
         <jsp-file>/inicio.jsp</jsp-file>
     </servlet>
-    <servlet>
-        <servlet-name>FacadeServ</servlet-name>
-        <servlet-class>negocio.facade.FacadeServ</servlet-class>
-    </servlet>
     <session-config>
         <session-timeout>
             30

@@ -62,12 +62,16 @@ public class EmailBuilder {
     
     public boolean sendEmailIndividualSingle( String emailUser, String emailPass, String emailDestino, String contenido, String asunto){
          Properties propiedades = System.getProperties();
-          propiedades.setProperty("mail.smtp.host", "localhost");
+          propiedades.setProperty("mail.smtp.host", "smtp.gmail.com");
+          propiedades.setProperty("mail.smtp.starttls.enable", "true");
+          propiedades.setProperty("mail.smtp.port", "587");
           propiedades.setProperty("mail.user", emailUser); 
           propiedades.setProperty("mail.password", emailPass);
+          propiedades.setProperty("mail.smtp.auth", "true");
           Session sesion = Session.getDefaultInstance(propiedades);
           try{
-               MimeMessage mensaje = new MimeMessage(sesion);
+              Autenticador autenticador = new Autenticador();
+               MimeMessage mensaje = new MimeMessage(Session.getInstance(propiedades, autenticador));
                mensaje.setFrom(new InternetAddress(emailUser));
                mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(emailDestino));
                 mensaje.setSubject(asunto);
@@ -78,35 +82,6 @@ public class EmailBuilder {
             Logger.getLogger(EmailBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        /*
-        
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        props.put("mail.smtp.port", "25");
- 
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(emailUser, emailPass);
-                    }
-                });
- 
-        try {
- 
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(emailUser));
-            message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(emailDestino));
-            message.setSubject(asunto);
-            message.setText(contenido); 
-            Transport.send(message);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace(); 
-        }*/
         return false;
     }
      
@@ -150,6 +125,6 @@ public class EmailBuilder {
     
     public static void main(String[] args) {
         EmailBuilder eb=new EmailBuilder();
-        eb.sendEmailIndividualSingle("djjaemaiyet@gmail.com","passworddjja", "deniseduardoisidrogonzalez@gmail.com", "hola", "nada");
+        eb.sendEmailIndividualSingle("djjaemaiyet@gmail.com", "passworddjja", "deniseduardoisidrogonzalez@gmail.com", "Prueba de correo", "Este correo si se envía");
     }
 }

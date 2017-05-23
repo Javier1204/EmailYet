@@ -5,8 +5,11 @@
  */
 package negocio.facade;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import negocio.dto.PersonaDTO;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  * ¡¡¡¡OJOOOO!!! 
@@ -96,11 +103,36 @@ public class FacadeServ extends HttpServlet {
         return false;
     }
     
-    public boolean sendEmail(){
+    public boolean sendEmail(HttpServletRequest request) throws Exception{
         //Código de subir archivo 
         
+        
+        /*FileItemFactory es una interfaz para crear FileItem*/
+        FileItemFactory file_factory = new DiskFileItemFactory();
+ 
+        /*ServletFileUpload esta clase convierte los input file a FileItem*/
+        ServletFileUpload servlet_up = new ServletFileUpload(file_factory);
+        /*sacando los FileItem del ServletFileUpload en una lista */
+        List items = servlet_up.parseRequest(request);
+ 
+        for(int i=0;i<items.size();i++){
+            /*FileItem representa un archivo en memoria que puede ser pasado al disco duro*/
+            FileItem item = (FileItem) items.get(i);
+            /*item.isFormField() false=input file; true=text field*/
+            if (! item.isFormField()){
+                /*cual sera la ruta al archivo en el servidor*/
+                File archivo_server = new File(""+item.getName());
+                /*y lo escribimos en el servidor*/
+                item.write(archivo_server);
+                out.print("Nombre --> " + item.getName() );
+                out.print("<br> Tipo --> " + item.getContentType());
+                out.print("<br> tamaño --> " + (item.getSize()/1240)+ "KB");
+                out.print("<br>");
+            }
+        }
+        
         //Leer archivo retorna un boolean. 
-        facade.leerArchivo("ruta", "contenido_mensaje", "asunto");
+        facade.leerArchivo("ruta", "contenido_mensaje", "asunto", 0);
         return false;
     }
 }
