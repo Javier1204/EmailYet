@@ -64,4 +64,7 @@ public class Facade {
         //Retornar boolean de email_helper
         //return false;
     }
+    public static void main(String[] args) {
+        
+    }
 }
