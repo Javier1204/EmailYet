@@ -65,7 +65,7 @@
                                     <li class="user-header">
                                         <img src="dist/img/user.png" class="img-circle" alt="User Image">
                                         <p>
-                                             Usuario de mail
+                                            Usuario de mail
                                             <small> Alejandro, Jairo, Denis y Javier  </small>
                                         </p>
                                     </li>
@@ -85,21 +85,18 @@
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <ul class="sidebar-menu">
-                                <li class="header">MAIN NAVIGATION</li>
-                                <li class="active treeview">
-                                    <a href="inicio.jsp">
-                                        <i class="fa fa-dashboard"></i> <span>Inicio</span>
-                                        <span class="pull-right-container">
-                                        </span>
-                                    </a>
-                                </li>
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li class="active treeview">
+                            <a href="inicio.jsp">
+                                <i class="fa fa-dashboard"></i> <span>Inicio</span>
+                                <span class="pull-right-container">
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
             </aside>
-
-            <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
                         Enviar Correo
@@ -110,7 +107,6 @@
                         <li class="active">Enviar Correo</li>
                     </ol>
                 </section>
-
                 <section class="content">
                     <div id="message_container"></div>
                     <!-- Default box -->
@@ -118,31 +114,27 @@
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Crear Correo Electronico</h3>
-
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                         <i class="fa fa-minus"></i></button>
                                 </div>
                             </div>
                             <div class="box-body">
-                                <form id="form_email">
+                                <form id="form_email" action="FacadeServ?prueba=true" enctype="multipart/form-data" method="POST">
                                     <div class="col-md-12">
-
-                                        <textarea id="txt_email" class="textarea" placeholder="Place some text here" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-
+                                        <textarea id="txt_email" name="txt_email" class="textarea" placeholder="Place some text here" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                     </div>
-
                                     <div class="form-group col-md-12">
                                         <label for="file_excel">Archivo de excel</label>
-                                        <input type="file" id="file_excel" accept=".xlsx">
+                                        <input type="file" id="file_excel" name="file_excel" accept=".xlsx">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="">Asunto</label>
-                                        <input class="form-control" type="text" id="txt_asunto" >
+                                        <input class="form-control" type="text" name="txt_asunto" id="txt_asunto" >
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="">Nombre de la columna para correos</label>
-                                        <input class="form-control" type="text" id="txt_column" >
+                                        <input class="form-control" type="text" name="txt_column" id="txt_column" >
                                     </div>
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-default">Enviar Correo</button>
@@ -168,7 +160,7 @@
                                 </div>
                             </div>
                             <div id="divCarga" class="box-body">
-                                
+
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
@@ -191,26 +183,26 @@
                 reserved.
             </footer>
 
-        <!-- jQuery 2.2.3 -->
-        <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-        <!-- jQuery UI 1.11.4 -->
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-        <script>
-            $.widget.bridge('uibutton', $.ui.button);
-        </script>
-        <!-- Bootstrap 3.3.6 -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="dist/js/app.min.js" type="text/javascript"></script>
-        <script src="app/app.js" type="text/javascript"></script>
-        <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+            <!-- jQuery 2.2.3 -->
+            <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+            <!-- jQuery UI 1.11.4 -->
+            <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+            <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+            <script>
+                $.widget.bridge('uibutton', $.ui.button);
+            </script>
+            <!-- Bootstrap 3.3.6 -->
+            <script src="bootstrap/js/bootstrap.min.js"></script>
+            <script src="dist/js/app.min.js" type="text/javascript"></script>
+            <script src="app/app.js" type="text/javascript"></script>
+            <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
 
-        <!--utilities-->
-        <script src="plugins/eModal/dist/eModal.min.js" type="text/javascript"></script>
-        <!--yet core scripts-->
-        <script src="app/util/constants.js" type="text/javascript"></script>
-        <script src="app/app.js" type="text/javascript"></script>
-        <!--page scripts-->
-        <script src="app/views/inicio/inicio.js" type="text/javascript"></script>
+            <!--utilities-->
+            <script src="plugins/eModal/dist/eModal.min.js" type="text/javascript"></script>
+            <!--yet core scripts-->
+            <script src="app/util/constants.js" type="text/javascript"></script>
+            <script src="app/app.js" type="text/javascript"></script>
+            <!--page scripts-->
+            <script src="app/views/inicio/inicio.js" type="text/javascript"></script>
     </body>
 </html>

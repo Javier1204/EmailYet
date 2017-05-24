@@ -1,13 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="Application.Models.DTO.UserDTO"%>
-<%
 
-    UserDTO u= (UserDTO) session.getAttribute("user");
-    if(u!=null){
-        response.sendRedirect("inicio");
-    }
-
-%>
 <!DOCTYPE html>
 <html>
     <head>

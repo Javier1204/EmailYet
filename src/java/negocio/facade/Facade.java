@@ -17,6 +17,7 @@ import negocio.dto.PersonaDTO;
 import negocio.dto.UserDTO;
 import negocio.interfaces.InterfaceEmailResponse;
 import negocio.interfaces.InterfaceExcel;
+import negocio.parser.ExcelReader;
 import negocio.response.EmailBuilder;
 import org.apache.commons.codec.digest.DigestUtils;
 import util.Conexion;
@@ -27,8 +28,8 @@ import util.Conexion;
  * @author javie
  */
 public class Facade {
-    private InterfaceExcel excel_helper;
-    private EmailBuilder email_helper;
+    private InterfaceExcel excel_helper = new ExcelReader();
+    private EmailBuilder email_helper = new EmailBuilder();
     
     public boolean IniciarSesion(String user, String pass) throws SQLException{
         Connection con=null;
@@ -53,6 +54,7 @@ public class Facade {
     
     public boolean leerArchivo(String ruta, String contenido, String asunto,int columna){
         //Pedir a excel_helper que retorne la lista de Personas a través de leerArchivo
+        System.out.println("Entra");
         IExcelContent ec=excel_helper.leerArchivo(ruta);
         //Delegar función de envío de email a enviarEmail (Abajo). Retornar su boolean
         return this.enviarEmail(ec, contenido, asunto,columna);
