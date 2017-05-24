@@ -54,7 +54,7 @@ public class Facade {
     
     public boolean leerArchivo(String ruta, String contenido, String asunto,int columna){
         //Pedir a excel_helper que retorne la lista de Personas a través de leerArchivo
-        System.out.println("Entra");
+        System.out.println("datos entrada ******************************************\n"+ruta+"\n"+contenido+"\n"+asunto+"\n"+columna);
         IExcelContent ec=excel_helper.leerArchivo(ruta);
         //Delegar función de envío de email a enviarEmail (Abajo). Retornar su boolean
         return this.enviarEmail(ec, contenido, asunto,columna);
@@ -66,7 +66,10 @@ public class Facade {
         //Retornar boolean de email_helper
         //return false;
     }
+    
+    
     public static void main(String[] args) {
-        
+        Facade f=new Facade();
+        System.out.println(f.leerArchivo("C:\\Users\\Lenovo\\Desktop\\prueba.xlsx", "$nombre$ hola $telefono$", "nada", 1));
     }
 }

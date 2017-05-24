@@ -45,7 +45,7 @@ public class EmailBuilder {
         ArrayList<String> correosEnviados=new ArrayList<>();
         for (int i=0; i<tabla.getDatos().size();i++) {
             String body=this.buildBody(i,contenidoMensaje, tabla);
-            this.sendEmailIndividualSingle("djjaemaiyet@gmail.com","passworddjja" ,tabla.getDatos().get(i).get(i), body,asunto);
+            this.sendEmailIndividualSingle("djjaemaiyet@gmail.com","passworddjja" ,tabla.getDatos().get(i).get(columna), body,asunto);
         }
         
         
@@ -55,7 +55,7 @@ public class EmailBuilder {
      private String buildBody(int posicion, String contenido, IExcelContent tabla){
         String bodyEmail=contenido;
         for (int i = 0; i < tabla.getTitulos().size(); i++) {
-            bodyEmail.replace("$"+tabla.getTitulos()+"$",tabla.getDatos().get(posicion).get(i));
+            bodyEmail=bodyEmail.replace("$"+tabla.getTitulos().get(i)+"$",tabla.getDatos().get(posicion).get(i));
         }        
         return bodyEmail;
     }
@@ -94,7 +94,7 @@ public class EmailBuilder {
         int numError=1;
         String bodyEmail=contenido;
         for (int i = 0; i < tabla.getTitulos().size(); i++) {
-            bodyEmail.replace("$"+tabla.getTitulos().get(i)+"$",tabla.getTitulos().get(i));
+            bodyEmail=bodyEmail.replace("$"+tabla.getTitulos().get(i)+"$",tabla.getTitulos().get(i));
         }
         char c[]=bodyEmail.toCharArray();
         for (int i=0;i<c.length;i++) {
