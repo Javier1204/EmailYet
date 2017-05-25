@@ -45,7 +45,7 @@ import org.apache.commons.io.FilenameUtils;
 @WebServlet(name = "FacadeServ", urlPatterns = {"/FacadeServ"})
 public class FacadeServ extends HttpServlet {
 
-    private Facade facade= new Facade();
+    private Facade facade = new Facade();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -109,6 +109,9 @@ public class FacadeServ extends HttpServlet {
         if (request.getParameter("prueba") != null) {
             prueba(request, response);
         }
+        if (request.getParameter("iniciar") != null) {
+            iniciarSesion(request, response);
+        }
     }
 
     /**
@@ -121,9 +124,16 @@ public class FacadeServ extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public boolean iniciarSesion(String user, String pass) {
-        //Código para iniciar sesión. Se delega a facade
-        return false;
+    public boolean iniciarSesion(HttpServletRequest request, HttpServletResponse response) {
+        String user = request.getParameter("username");
+        String password = request.getParameter("password");
+        boolean exito= false;
+        try {
+            exito = facade.IniciarSesion(user, password);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        return exito;
     }
 
     public void prueba(HttpServletRequest request, HttpServletResponse response)
@@ -131,10 +141,10 @@ public class FacadeServ extends HttpServlet {
         try {
             /*FileItemFactory es una interfaz para crear FileItem*/
             FileItemFactory file_factory = new DiskFileItemFactory();
-            String ruta2 ="";
+            String ruta2 = "";
             String contenido = "";
-            String asunto ="";
-            int column=0;
+            String asunto = "";
+            int column = 0;
             /*ServletFileUpload esta clase convierte los input file a FileItem*/
             ServletFileUpload servlet_up = new ServletFileUpload(file_factory);
             /*sacando los FileItem del ServletFileUpload en una lista */
@@ -147,28 +157,29 @@ public class FacadeServ extends HttpServlet {
                 if (!item.isFormField()) {
                     /*cual sera la ruta al archivo en el servidor*/
                     String ruta = getServletContext().getRealPath("/");
-                    ruta2 = ruta+"/archivos/" + item.getName();
+                    ruta2 = ruta + "/archivos/" + item.getName();
                     File archivo_server = new File(ruta2);
                     /*y lo escribimos en el servidor*/
                     item.write(archivo_server);
-                        out.print("Ruta ---->"+ruta2);
-                }else {
+                    out.print("Ruta ---->" + ruta2);
+                } else {
                     String name = item.getFieldName();
                     String value = item.getString();
-                    if(name.equals("txt_email")){
+                    if (name.equals("txt_email")) {
                         contenido = value;
-                    }else if(name.equals("txt_asunto")){
+                    } else if (name.equals("txt_asunto")) {
                         asunto = value;
-                    }else if(name.equals("txt_column")){
+                    } else if (name.equals("txt_column")) {
                         column = Integer.parseInt(value);
                     }
                 }
-                
+
             }
-            out.print("Contenido: "+contenido + " asunto: "+asunto +" numero col = "+column);
+            out.print("Contenido: " + contenido + " asunto: " + asunto + " numero col = " + (column-1));
             //Leer archivo retorna un boolean. 
-            boolean ex = facade.leerArchivo(ruta2, contenido, asunto, column);
-            if(!ex){
+            boolean ex = facade.leerArchivo(ruta2, contenido, asunto, (column-1));
+            out.print(ex);
+            if (!ex) {
                 response.sendRedirect("inicio.jsp");
             }
         } catch (Exception e) {
@@ -195,11 +206,11 @@ public class FacadeServ extends HttpServlet {
                 if (!item.isFormField()) {
                     /*cual sera la ruta al archivo en el servidor*/
                     String ruta = getServletContext().getRealPath("/");
-                    String ruta2 = ruta+"/archivos/" + item.getName();
+                    String ruta2 = ruta + "/archivos/" + item.getName();
                     File archivo_server = new File(ruta);
                     /*y lo escribimos en el servidor*/
                     item.write(archivo_server);
-                    out.print("Ruta ---->"+ruta);
+                    out.print("Ruta ---->" + ruta);
 //                    out.print("Nombre --> " + item.getName());
 //                    out.print("<br> Tipo --> " + item.getContentType());
 //                    out.print("<br> tamaño --> " + (item.getSize() / 1240) + "KB");

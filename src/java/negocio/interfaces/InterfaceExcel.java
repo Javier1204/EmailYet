@@ -15,5 +15,5 @@ import negocio.dto.PersonaDTO;
  */
 public interface InterfaceExcel {
     
-    public IExcelContent leerArchivo(String ruta);
+    public IExcelContent leerArchivo(String ruta) throws Exception;
 }

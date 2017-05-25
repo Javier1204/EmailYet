@@ -15,14 +15,12 @@ public class LogDTO {
     private String descripcion;
     private String fecha_hora_inicio;
     private String fecha_hora_fin; 
-    private String usuario;
 
-    public LogDTO(String titulo, String descripcion, String fecha_hora_inicio, String fecha_hora_fin, String usuario) {
+    public LogDTO(String titulo, String descripcion, String fecha_hora_inicio, String fecha_hora_fin) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha_hora_inicio = fecha_hora_inicio;
         this.fecha_hora_fin = fecha_hora_fin;
-        this.usuario = usuario;
     }
 
     public String getTitulo() {
@@ -55,14 +53,5 @@ public class LogDTO {
 
     public void setFecha_hora_fin(String fecha_hora_fin) {
         this.fecha_hora_fin = fecha_hora_fin;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-    
+    }   
 }

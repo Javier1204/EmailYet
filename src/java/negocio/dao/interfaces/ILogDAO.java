@@ -14,7 +14,7 @@ import negocio.dto.LogDTO;
  */
 public interface ILogDAO {
     
-    public boolean registrarLog(LogDTO log);
+    public boolean registrarLog(LogDTO log) throws Exception;
     public ArrayList<ILogDAO> listarLogs();
     
 }

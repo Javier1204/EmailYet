@@ -12,7 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import negocio.dao.interfaces.IExcelContent;
 import negocio.dao.interfaces.IUserDAO;
+import negocio.daos.LogDAO;
 import negocio.daos.UserDAO;
+import negocio.dto.LogDTO;
 import negocio.dto.PersonaDTO;
 import negocio.dto.UserDTO;
 import negocio.interfaces.InterfaceEmailResponse;
@@ -67,9 +69,21 @@ public class Facade {
         //return false;
     }
     
+    public boolean registrarLog(String titulo, String descripcion, String fecha_hora_inicio, String fecha_hora_fin){
+        LogDAO dao = new LogDAO();
+        boolean exito = false;
+        try{
+            LogDTO dto = new LogDTO(titulo, descripcion, fecha_hora_inicio, fecha_hora_fin);
+            exito = dao.registrarLog(dto);
+        }catch(Exception e){
+            e.getStackTrace();
+        }
+        return exito;
+    }
     
     public static void main(String[] args) {
         Facade f=new Facade();
         System.out.println(f.leerArchivo("C:\\Users\\Lenovo\\Desktop\\prueba.xlsx", "$nombre$ hola $telefono$", "nada", 1));
     }
+    
 }

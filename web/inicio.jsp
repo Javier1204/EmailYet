@@ -122,6 +122,7 @@
                             <div class="box-body">
                                 <form id="form_email" action="FacadeServ?prueba=true" enctype="multipart/form-data" method="POST">
                                     <div class="col-md-12">
+                                        <p>Para la correspondiente construcción del mensaje poner las variables entre $ con el nombre de la columna en el excel que contiene la información a poner en la variable. No distingue entre mayúsculas.</p>
                                         <textarea id="txt_email" name="txt_email" class="textarea" placeholder="Place some text here" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -133,7 +134,8 @@
                                         <input class="form-control" type="text" name="txt_asunto" id="txt_asunto" >
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="">Nombre de la columna para correos</label>
+                                        <label for="">Nombre de la columna en excel que contiene los correos</label>
+                                        <p>El número de la columna inicia desde 1.</p>
                                         <input class="form-control" type="text" name="txt_column" id="txt_column" >
                                     </div>
                                     <div class="col-md-12">

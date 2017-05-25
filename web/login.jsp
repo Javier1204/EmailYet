@@ -33,15 +33,15 @@
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
-                <p class="login-box-msg">inicio sesion</p>
+                <p class="login-box-msg">Inicio sesion</p>
 
                 <form action="" method="POST">
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control" placeholder="Username" name="username">
+                        <input type="text" class="form-control" placeholder="Username" id="username" name="username">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input  type="password" class="form-control" placeholder="Password" username="password">
+                        <input  type="password" class="form-control" placeholder="Password" id="password" name="password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">

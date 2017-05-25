@@ -14,8 +14,8 @@ import java.sql.ResultSet;
  * @author javie
  */
 public class Conexion {
-     private static String bd = "";
-    private static String login = "";
+     private static String bd = "yet";
+    private static String login = "root";
     private static String password = "";
     private static String url = "jdbc:mysql://localhost/";
     private static String DRIVER = "org.gjt.mm.mysql.Driver";
